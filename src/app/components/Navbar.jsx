@@ -2,6 +2,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import wanderlust from '../../../public/assets/Wanderlast.png'
+import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => {
     return (
@@ -17,7 +18,7 @@ const Navbar = () => {
                 <Image src={wanderlust} alt='Wanderlust-logo' width={200} height={200}></Image>
             </div>
             <ul className='flex items-center gap-6'>
-                <li><Link className='text-base font-semibold' href='/profile'>Profile</Link></li>
+                <li><Link className='text-base font-semibold flex items-center gap-2' href='/profile'><CgProfile></CgProfile>Profile</Link></li>
                 <li><Link className='text-base font-semibold' href='/login'>Login</Link></li>
                 <li><Link className='text-base font-semibold' href='/signup'>Sign Up</Link></li>
             </ul>

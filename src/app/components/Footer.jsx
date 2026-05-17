@@ -1,8 +1,8 @@
 const Footer = () => {
   return (
-    <footer className="bg-black text-gray-400 px-6 md:px-16 py-16">
-      <div className="w-11/12 mx-auto">
-        <div className="mb-12">
+    <footer className="bg-black text-gray-400 py-12">
+      <div className="w-11/12 lg:w-10/12 mx-auto">
+        <div className="mb-18">
           <h1 className="text-6xl md:text-7xl font-bold text-white">
             Wanderlust
           </h1>
@@ -31,7 +31,7 @@ const Footer = () => {
           </div>
 
           {/* Quick Links */}
-          <div>
+          <div className="lg:">
             <h3 className="text-white mb-3 tracking-wide">QUICK LINKS</h3>
             <ul className="space-y-2">
               <li className="hover:text-white cursor-pointer">Home</li>

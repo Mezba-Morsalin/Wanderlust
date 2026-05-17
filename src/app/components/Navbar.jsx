@@ -11,6 +11,7 @@ const Navbar = () => {
             <ul className='flex items-center gap-6'>
                 <li><Link className='text-base font-semibold' href='/'>Home</Link></li>
                 <li><Link className='text-base font-semibold' href='/destinations'>Destinations</Link></li>
+                <li><Link className='text-base font-semibold' href='/add-destination'>Add Destinations</Link></li>
                 <li><Link className='text-base font-semibold' href='/my-bookings'>My Bookings</Link></li>
                 <li><Link className='text-base font-semibold' href='/admin'>Admin</Link></li>
             </ul>

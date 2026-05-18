@@ -2,6 +2,7 @@
 
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
 import React from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 
 const AddDestination = () => {
 
@@ -11,7 +12,7 @@ const AddDestination = () => {
         const destination = Object.fromEntries(formData.entries());
         console.log(destination);
 
-        const res = await fetch('http://localhost:5000/destination', {
+        const res = await fetch('http://localhost:5000/destinations', {
             method : 'POST',
             headers : {
                 "Content-type" : "application/json"
@@ -20,6 +21,11 @@ const AddDestination = () => {
         })
         const data = await res.json();
         console.log(data)
+
+        if (data) {
+          toast.success('Destination Added Successfully');
+          e.target.reset()
+        }
     }
     return (
         <div className='w-11/12 mx-auto my-12'>
@@ -156,6 +162,7 @@ const AddDestination = () => {
             </Button>
           </form>
             </div>
+            <Toaster/>
         </div>
     );
 };

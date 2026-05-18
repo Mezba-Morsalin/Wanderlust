@@ -3,3 +3,9 @@ export const getDestination = async () => {
     const data = await res.json()
     return data
 }
+
+export const singleDestination = async(id)=> {
+    const res = await fetch(`http://localhost:5000/destinations/${id}`)
+    const data = await res.json();
+    return data
+}

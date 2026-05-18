@@ -1,8 +1,12 @@
-import { Geist, Geist_Mono } from "next/font/google";
+import { Cause, Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
+  subsets: ["latin"],
+});
+export const causeSans = Cause({
+  variable: "--font-cause-sans",
   subsets: ["latin"],
 });
 

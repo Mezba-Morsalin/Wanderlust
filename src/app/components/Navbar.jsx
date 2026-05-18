@@ -6,7 +6,8 @@ import { CgProfile } from 'react-icons/cg';
 
 const Navbar = () => {
     return (
-        <nav className='p-5 mx-auto bg-white shadow'>
+        <nav className='bg-white shadow py-5'>
+            <div className='w-11/12 mx-auto'>
             <div className='flex justify-between items-center'>
             <ul className='flex items-center gap-6'>
                 <li><Link className='text-base font-semibold' href='/'>Home</Link></li>
@@ -23,6 +24,7 @@ const Navbar = () => {
                 <li><Link className='text-base font-semibold' href='/login'>Login</Link></li>
                 <li><Link className='text-base font-semibold' href='/signup'>Sign Up</Link></li>
             </ul>
+        </div>
         </div>
         </nav>
     );

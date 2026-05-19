@@ -9,7 +9,7 @@ const FeatureDestination = async () => {
     const destinations = await getDestination()
     return (
         <div className='w-11/12 mx-auto my-16'>
-            <div className='flex justify-between items-center'>
+            <div className='flex justify-between'>
                 <div className='mb-10'>
                     <h1 className='text-4xl font-semibold mb-2'>Featured Destinations</h1>
                     <p className='text-black/50'>Handpicked travel experiences for the adventure seekers</p>

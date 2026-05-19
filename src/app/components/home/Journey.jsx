@@ -1,5 +1,6 @@
 import { causeSans } from '@/app/layout';
 import { Button } from '@heroui/react';
+import Link from 'next/link';
 import React from 'react';
 import { FaLongArrowAltRight } from 'react-icons/fa';
 
@@ -9,7 +10,7 @@ const Journey = () => {
             <div className='h-full flex flex-col justify-center items-center space-y-3'>
                 <h2 className={`${causeSans.className} text-4xl lg:text-5xl text-white font-semibold`}>Ready to Start Your Journey</h2>
                 <p className='text-white mb-6'>Join thousands of travelers who have discovered the world with us</p>
-                <Button className={'bg-white text-black flex gap-3 items-center rounded'} variant='ghost'>BOOK YOUR TRIP TODAY <FaLongArrowAltRight /></Button>
+                <Link href={'/destinations'}><Button className={'bg-white text-black flex gap-3 items-center rounded'} variant='ghost'>BOOK YOUR TRIP TODAY <FaLongArrowAltRight /></Button></Link>
             </div>
         </div>
     );

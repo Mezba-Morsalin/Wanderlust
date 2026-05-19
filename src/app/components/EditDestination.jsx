@@ -1,30 +1,14 @@
-"use client"
 
+import { UpdateForm } from '@/lib/action';
 import { Button, FieldError, Input, Label, ListBox, Modal, Surface, TextArea, TextField, Select } from '@heroui/react';
 import React from 'react';
 import { FiEdit3 } from 'react-icons/fi';
 
 const EditDestination = ({destination}) => {
-    const onSubmitForm = async (e) => {
-        // e.preventDefault();
-        // const formData = new FormData(e.currentTarget);
-        // const destination = Object.fromEntries(formData.entries());
-        // console.log(destination);
-
-        // const res = await fetch('http://localhost:5000/destinations', {
-        //     method : 'POST',
-        //     headers : {
-        //         "Content-type" : "application/json"
-        //     },
-        //     body : JSON.stringify(destination),
-        // })
-        // const data = await res.json();
-        // console.log(data)
-
-        // if (data) {
-        //   toast.success('Destination Added Successfully');
-        //   e.target.reset()
-        // }
+  
+    const updateDataAction = async (formData) => {
+      "use server"
+      const result = await UpdateForm(destination._id, formData);
     }
     return (
         <div>
@@ -45,7 +29,7 @@ const EditDestination = ({destination}) => {
             </Modal.Header>
             <Modal.Body className="p-6">
               <Surface variant="default">
-               <form onSubmit={onSubmitForm}
+               <form action={updateDataAction}
                            className="p-10 space-y-8"
                          >
                            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
@@ -68,12 +52,12 @@ const EditDestination = ({destination}) => {
                              {/* Category - Updated Select Component */}
                              <div>
                                <Select
-                               defaultValue={destination.category}
-                                 name="category"
-                                 isRequired
-                                 className="w-full"
-                                 placeholder="Select category"
-                               >
+                                  defaultSelectedKeys={[destination.category]}
+                                  name="category"
+                                  isRequired
+                                  className="w-full"
+                                  placeholder="Select category"
+>
                                  <Label>Category</Label>
                                  <Select.Trigger className="rounded-2xl">
                                    <Select.Value />
@@ -155,7 +139,10 @@ const EditDestination = ({destination}) => {
                
                              {/* Description */}
                              <div className="md:col-span-2">
-                               <TextField defaultValue={destination.description} name="description" isRequired>
+                               <TextField  name="description"
+   defaultValue={destination.description}
+   placeholder="Describe the travel experience..."
+   className="rounded-3xl">
                                  <Label>Description</Label>
                                  <TextArea
                                    placeholder="Describe the travel experience..."
@@ -165,25 +152,16 @@ const EditDestination = ({destination}) => {
                                </TextField>
                              </div>
                            </div>
-               
-                           {/* Buttons */}
-               
-                           <Button
-                             type="submit"
-                             variant="outline"
-                             className=" rounded-2xl w-full bg-cyan-500 text-white"
-                           >
-                             Update Package
-                           </Button>
-                         </form>
-              </Surface>
-            </Modal.Body>
-            <Modal.Footer>
+               <Modal.Footer>
               <Button slot="close" className={'text-cyan-500'} variant="secondary">
                 Cancel
               </Button>
-              <Button className={'bg-cyan-500'} slot="close">Edit Destination</Button>
+              <Button type='submit' className={'bg-cyan-500'} slot="close">Edit Destination</Button>
             </Modal.Footer>
+                         </form>
+              </Surface>
+            </Modal.Body>
+            
           </Modal.Dialog>
         </Modal.Container>
       </Modal.Backdrop>

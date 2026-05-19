@@ -1,5 +1,6 @@
 import Banner from "../components/Banner";
 import FeatureDestination from "../components/home/FeatureDestination";
+import Journey from "../components/home/Journey";
 import Travelers from "../components/home/Travelers";
 import WhyChoose from "../components/home/WhyChoose";
 
@@ -11,6 +12,7 @@ export default function Home() {
       <FeatureDestination/>
       <WhyChoose/>
       <Travelers/>
+      <Journey/>
     </div>
   );
 }

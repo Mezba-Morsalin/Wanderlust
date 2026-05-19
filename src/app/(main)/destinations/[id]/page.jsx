@@ -9,6 +9,7 @@ import { IoArrowForwardSharp, IoLocationOutline } from 'react-icons/io5';
 import { SlCalender } from 'react-icons/sl';
 import { TiDelete } from 'react-icons/ti';
 import { causeSans } from '@/app/layout';
+import EditDestination from '@/app/components/EditDestination';
 
 const DestinationDetailsPage = async ({params}) => {
     const {id} = await params
@@ -18,7 +19,7 @@ const DestinationDetailsPage = async ({params}) => {
             <div className='flex justify-between'>
                 <Link className='flex items-center gap-2 hover:text-cyan-500 hover: transition duration-300' href={'/destinations'}><IoMdArrowBack /> Back to Destination</Link>
                 <div className='flex gap-3'>
-                    <Button className={'flex items-center gap-2.5'} variant="outline"><FiEdit3 />Edit</Button>
+                    <EditDestination destination = {destination}/>
                     <Button className={'flex items-center gap-2.5'} variant="danger"><TiDelete />Cancel</Button>
                 </div>
             </div>

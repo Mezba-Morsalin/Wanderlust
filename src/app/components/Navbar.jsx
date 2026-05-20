@@ -21,7 +21,7 @@ const Navbar = () => {
             </div>
             <ul className='flex items-center gap-6'>
                 <li><Link className='text-base font-semibold flex items-center gap-2' href='/profile'><CgProfile></CgProfile>Profile</Link></li>
-                <li><Link className='text-base font-semibold' href='/login'>Login</Link></li>
+                <li><Link className='text-base font-semibold' href='/signin'>Sign In</Link></li>
                 <li><Link className='text-base font-semibold' href='/signup'>Sign Up</Link></li>
             </ul>
         </div>

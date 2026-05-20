@@ -3,6 +3,8 @@ import { getDestination } from '@/lib/data';
 import Image from 'next/image';
 import React from 'react';
 import noDestination from '../../../../public/assets/NoDestination.png'
+import Link from 'next/link';
+import { GoArrowRight } from 'react-icons/go';
 const DestinationPage = async () => {
     const destinations = await getDestination()
     return (
@@ -22,6 +24,9 @@ const DestinationPage = async () => {
             </div>
             </div>
             }
+            <div className='flex justify-center mt-8'>
+                <Link className='text-cyan-500 flex items-center gap-1 border border-cyan-500 p-3 hover:scale-105 transition duration-300 group' href='/add-destination'>Add Your Destinations <GoArrowRight className='transition duration-300 group-hover:translate-x-2' /></Link>
+            </div>
         </div>
     );
 };

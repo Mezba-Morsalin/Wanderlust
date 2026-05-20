@@ -1,13 +1,12 @@
+import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-
+import err from '../../public/assets/404.png'
 const ErrorPage = () => {
     return (
         <div className="min-h-screen flex items-center justify-center  text-black px-4">
       <div className="text-center space-y-6">
-        <h1 className="text-[120px] font-extrabold text-cyan-500 leading-none">
-          404
-        </h1>
+        <Image className='mx-auto rounded-full' src={err} height={300} width={400} alt='not-found'></Image>
 
         <h2 className="text-3xl md:text-4xl font-bold">
           Page Not Found

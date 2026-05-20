@@ -3,13 +3,12 @@ import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
-import { FiEdit3 } from 'react-icons/fi';
 import { IoMdArrowBack } from 'react-icons/io';
 import { IoArrowForwardSharp, IoLocationOutline } from 'react-icons/io5';
 import { SlCalender } from 'react-icons/sl';
-import { TiDelete } from 'react-icons/ti';
 import { causeSans } from '@/app/layout';
 import EditDestination from '@/app/components/EditDestination';
+import DeleteDestinations from '@/app/components/DeleteDestinations';
 
 const DestinationDetailsPage = async ({params}) => {
     const {id} = await params
@@ -20,7 +19,9 @@ const DestinationDetailsPage = async ({params}) => {
                 <Link className='flex items-center gap-2 hover:text-cyan-500 hover: transition duration-300' href={'/destinations'}><IoMdArrowBack /> Back to Destination</Link>
                 <div className='flex gap-3'>
                     <EditDestination destination = {destination}/>
-                    <Button className={'flex items-center gap-2.5'} variant="danger"><TiDelete />Cancel</Button>
+                    <DeleteDestinations
+  destination={destination}
+/>
                 </div>
             </div>
             <Image src={destination.imageUrl} className="h-[700px]  object-cover mx-auto mb-12" width={2000} height={2000} alt='destinations'></Image>

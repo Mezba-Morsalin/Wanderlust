@@ -8,7 +8,7 @@ const EditDestination = ({destination}) => {
   
     const updateDataAction = async (formData) => {
       "use server"
-      const result = await UpdateForm(destination._id, formData);
+      return UpdateForm(destination._id, formData);
     }
     return (
         <div>

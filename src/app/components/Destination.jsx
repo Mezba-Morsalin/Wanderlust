@@ -8,6 +8,7 @@ import { causeSans } from '../layout';
 
 const Destination = ({destination}) => {
     return (
+        
         <div className='space-y-4'>
             <Image src={destination.imageUrl} className="h-80 object-cover mx-auto" width={500} height={300} alt='destinations'></Image>
             <div className='px-5 space-y-2'>

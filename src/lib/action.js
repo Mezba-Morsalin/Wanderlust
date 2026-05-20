@@ -23,3 +23,17 @@ export const UpdateForm = async (_id, formData) => {
         revalidatePath(`/destinations`);
     }
 };
+
+// export const deleteDestinationAction = async (_id) => {
+    
+//     const  res = await fetch(`http://localhost:5000/destinations/${_id}`, {
+//         method : "DELETE"
+//     })
+
+//     const data = await res.json();
+
+//     if (data.deletedCount > 0) {
+//         revalidatePath('/destinations')
+//     }
+//     return data
+// }

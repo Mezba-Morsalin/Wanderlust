@@ -34,6 +34,12 @@ const SignUpPage = () => {
       toast.success("Sign Up Successful");
       redirect('/')
     }
+  };
+
+  const handleGoogle = async()=> {
+    await authClient.signIn.social({
+        provider: "google",
+      });
   }
     return (
         <div className='max-w-7xl mx-auto mt-16 px-5 md:px-0'>
@@ -41,9 +47,9 @@ const SignUpPage = () => {
              <h2 className={`text-4xl font-semibold`}>Create Your Account</h2>
             <p className='text-black/50'>Start your adventure with Wanderlust</p>
            </div>
-            <div className=''>
+            <div className=' max-w-xl mx-auto shadow border border-gray-200  p-12 rounded-2xl'>
                 <Form onSubmit={onSubmitForm}
-      className="flex max-w-xl mx-auto  flex-col gap-4 shadow border border-gray-200  p-12 rounded-2xl"
+      className="flex  flex-col gap-4 "
       render={(props) => <form {...props} data-custom="foo" />}
     >
         <TextField isRequired className="" name="name" type='text'>
@@ -111,8 +117,9 @@ const SignUpPage = () => {
 
   <div className="flex-1 border-t border-black/50"></div>
 </div>
-<div className='flex justify-center items-center'>
-    <Button className={'bg-gray-200 hover:scale-105 transition duration-300'} variant='ghost'>
+    </Form>
+    <div className='flex justify-center items-center my-4'>
+    <Button onClick={()=> handleGoogle()} className={'bg-gray-200 hover:scale-105 transition duration-300'} variant='ghost'>
     <Image src={googleImg} className='w-6' width={100} height={100} alt='google'></Image>
     Sign Up With Google
   </Button>
@@ -121,7 +128,6 @@ const SignUpPage = () => {
             <p className="text-black/50">Already Have an Account?</p>
             <Link className='text-cyan-500' href={'/signin'}>Sign In</Link>
         </div>
-    </Form>
             </div>
             <Toaster/>
         </div>

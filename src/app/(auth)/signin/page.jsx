@@ -30,7 +30,13 @@ const LoginPage = () => {
     }
     if (data) {
       toast.success("Sign In Successful")
-    }
+    };
+  }
+
+  const handleGoogle = async () => {
+     await authClient.signIn.social({
+    provider: "google",
+  });
   }
     return (
         <div className='max-w-7xl mx-auto mt-16 px-5 md:px-0'>
@@ -38,9 +44,9 @@ const LoginPage = () => {
                      <h2 className={`text-4xl font-semibold`}>Welcome Back</h2>
                     <p className='text-black/50'>Resume your adventure with Wanderlust</p>
                    </div>
-                    <div className=''>
+                    <div className='max-w-xl mx-auto shadow border border-gray-200  p-12 rounded-2xl'>
                         <Form onSubmit={onSubmitForm}
-              className="flex max-w-xl mx-auto  flex-col gap-4 shadow border border-gray-200  p-12 rounded-2xl"
+              className="flex   flex-col gap-4 "
               render={(props) => <form {...props} data-custom="foo" />}
             >
               <TextField
@@ -99,8 +105,9 @@ const LoginPage = () => {
         
           <div className="flex-1 border-t border-black/50"></div>
         </div>
-        <div className='flex justify-center items-center'>
-            <Button className={'bg-gray-200 hover:scale-105 transition duration-300'} variant='ghost'>
+            </Form>
+            <div className='flex justify-center items-center my-4'>
+            <Button onClick={()=> handleGoogle()} className={'bg-gray-200 hover:scale-105 transition duration-300'} variant='ghost'>
             <Image src={googleImg} className='w-6' width={100} height={100} alt='google'></Image>
             Login With Google
           </Button>
@@ -109,7 +116,6 @@ const LoginPage = () => {
                     <p className="text-black/50">Do not Have an Account?</p>
                     <Link className='text-cyan-500' href={'/signup'}>Sign Up</Link>
                 </div>
-            </Form>
                     </div>
                 </div>
     );

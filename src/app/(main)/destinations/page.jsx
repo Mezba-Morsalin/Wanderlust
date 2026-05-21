@@ -16,7 +16,8 @@ const DestinationPage = async () => {
                 <p>We couldn&apos;t find any destinations right now.
                             New travel places and exciting adventures will appear here soon.
                             Please check back later and explore more amazing destinations with us.</p>
-                </div> : <div><h2 className='text-3xl font-semibold mb-10'>Explore All Destinations</h2>
+                </div> : <div><h2 className='text-3xl font-semibold'>Explore All Destinations</h2>
+                <p className='text-black/50 mt-2.5 mb-10'>Find your perfect travel experience from our curated collection</p>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-8'>
                 {
                     destinations.map(destination => <Destination key={destination._id} destination= {destination}></Destination>)

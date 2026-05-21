@@ -1,11 +1,37 @@
 "use client"
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import googleImg from '../../../../public/assets/google.png'
 import Image from 'next/image';
 import Link from 'next/link';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
+import { authClient } from '@/lib/auth-client';
+import toast from 'react-hot-toast';
 
 const LoginPage = () => {
+
+  const [showPassword, setShowPassword] = useState(false);
+
+  const onSubmitForm = async (e) => {
+    e.preventDefault()
+    const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries());
+
+    const {data, error} = await authClient.signIn.email({
+      email : user.email,
+      password : user.password,
+      rememberMe :true,
+      callbackURL : '/'
+    });
+
+    if(error) {
+      toast.error("Invalid Email or Password");
+      return
+    }
+    if (data) {
+      toast.success("Sign In Successful")
+    }
+  }
     return (
         <div className='max-w-7xl mx-auto mt-16 px-5 md:px-0'>
                    <div className='space-y-3 mb-8 text-center'>
@@ -13,7 +39,7 @@ const LoginPage = () => {
                     <p className='text-black/50'>Resume your adventure with Wanderlust</p>
                    </div>
                     <div className=''>
-                        <Form
+                        <Form onSubmit={onSubmitForm}
               className="flex max-w-xl mx-auto  flex-col gap-4 shadow border border-gray-200  p-12 rounded-2xl"
               render={(props) => <form {...props} data-custom="foo" />}
             >
@@ -33,10 +59,11 @@ const LoginPage = () => {
                 <FieldError />
               </TextField>
               <TextField
+              className={'relative'}
                 isRequired
                 minLength={8}
                 name="password"
-                type="password"
+                type={showPassword ? "text" : "password"}
                 validate={(value) => {
                   if (value.length < 8) {
                     return "Password must be at least 8 characters";
@@ -52,18 +79,23 @@ const LoginPage = () => {
               >
                 <Label>Password</Label>
                 <Input placeholder="Enter your password" />
+                <span className='absolute top-8.5 right-3 cursor-pointer' onClick={()=> setShowPassword(!showPassword)}>
+                  {
+                    showPassword ? <FaEye/> : <FaEyeSlash/>
+                  }
+                </span>
                 <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
                 <FieldError />
               </TextField>
               <div className="flex gap-2">
                 <Button className={'w-full bg-cyan-500 hover:scale-105 transition duration-300'} type="submit">
-                  Create Account
+                  Sign In
                 </Button>
               </div>
               <div className="flex items-center gap-4">
           <div className="flex-1 border-t border-black/50"></div>
         
-          <p className="text-black/50">Or sign up with</p>
+          <p className="text-black/50">Or sign in with</p>
         
           <div className="flex-1 border-t border-black/50"></div>
         </div>

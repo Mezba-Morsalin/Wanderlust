@@ -11,7 +11,6 @@ const DeleteDestinations = ({destination }) => {
     })
 
     const data = await res.json();
-    console.log(data)
 
     if (data.deletedCount > 0) {
       toast.error(`${destination.destinationName} Deleted Successful`)

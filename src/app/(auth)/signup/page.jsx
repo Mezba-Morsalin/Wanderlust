@@ -1,11 +1,40 @@
 "use client"
 import { Button, Description, FieldError, Form, Input, Label, TextField } from '@heroui/react';
-import React from 'react';
+import React, { useState } from 'react';
 import googleImg from '../../../../public/assets/google.png'
 import Image from 'next/image';
 import Link from 'next/link';
+import { authClient } from '@/lib/auth-client';
+import toast, { Toaster } from 'react-hot-toast';
+import { redirect } from 'next/navigation';
+import { FaEye, FaEyeSlash } from 'react-icons/fa';
 
 const SignUpPage = () => {
+
+  const [showPassword, setShowPassword] = useState(false)
+
+  const onSubmitForm = async (e)=> {
+    e.preventDefault();
+    const formData = new FormData(e.currentTarget);
+    const user = Object.fromEntries(formData.entries());
+
+    const {data , error} = await authClient.signUp.email({
+      name : user.name,
+      image : user.image,
+      email : user.email,
+      password : user.password
+    });
+
+    if (error) {
+      toast.error("User already exists");
+      return
+    }
+
+    if (data) {
+      toast.success("Sign Up Successful");
+      redirect('/')
+    }
+  }
     return (
         <div className='max-w-7xl mx-auto mt-16 px-5 md:px-0'>
            <div className='space-y-3 mb-8 text-center'>
@@ -13,16 +42,20 @@ const SignUpPage = () => {
             <p className='text-black/50'>Start your adventure with Wanderlust</p>
            </div>
             <div className=''>
-                <Form
+                <Form onSubmit={onSubmitForm}
       className="flex max-w-xl mx-auto  flex-col gap-4 shadow border border-gray-200  p-12 rounded-2xl"
       render={(props) => <form {...props} data-custom="foo" />}
     >
-        <TextField className="" name="username">
-      <Label>Username</Label>
-      <Input placeholder="Enter username" />
+        <TextField isRequired className="" name="name" type='text'>
+      <Label>Full Name</Label>
+      <Input placeholder="Enter Your Username" />
       <FieldError />
     </TextField>
-      <TextField
+        <TextField className="" name="image" type='url'>
+      <Label>Image Link</Label>
+      <Input placeholder="Image URL" />
+    </TextField>
+      <TextField 
         isRequired
         name="email"
         type="email"
@@ -33,15 +66,16 @@ const SignUpPage = () => {
           return null;
         }}
       >
-        <Label>Email</Label>
+        <Label>Email Address</Label>
         <Input placeholder="john@example.com" />
         <FieldError />
       </TextField>
       <TextField
+      className={'relative'}
         isRequired
         minLength={8}
         name="password"
-        type="password"
+        type={showPassword ? "text" : "password"}
         validate={(value) => {
           if (value.length < 8) {
             return "Password must be at least 8 characters";
@@ -57,6 +91,11 @@ const SignUpPage = () => {
       >
         <Label>Password</Label>
         <Input placeholder="Enter your password" />
+        <span className='absolute top-8.5 right-3 cursor-pointer' onClick={()=> setShowPassword(!showPassword)}>
+          {
+            showPassword ? <FaEye/> : <FaEyeSlash/>
+          }
+        </span>
         <Description>Must be at least 8 characters with 1 uppercase and 1 number</Description>
         <FieldError />
       </TextField>
@@ -84,6 +123,7 @@ const SignUpPage = () => {
         </div>
     </Form>
             </div>
+            <Toaster/>
         </div>
     );
 };

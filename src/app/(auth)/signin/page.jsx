@@ -36,6 +36,7 @@ const LoginPage = () => {
   const handleGoogle = async () => {
      await authClient.signIn.social({
     provider: "google",
+     callbackURL: "/",
   });
   }
     return (
@@ -47,7 +48,6 @@ const LoginPage = () => {
                     <div className='max-w-xl mx-auto shadow border border-gray-200  p-12 rounded-2xl'>
                         <Form onSubmit={onSubmitForm}
               className="flex   flex-col gap-4 "
-              render={(props) => <form {...props} data-custom="foo" />}
             >
               <TextField
                 isRequired

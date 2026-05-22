@@ -4,7 +4,7 @@ import React from 'react';
 import { GoArrowUpRight } from 'react-icons/go';
 import { IoLocationOutline } from 'react-icons/io5';
 import { SlCalender } from 'react-icons/sl';
-import { causeSans } from '../layout';
+
 
 const Destination = ({destination}) => {
     return (
@@ -22,7 +22,7 @@ const Destination = ({destination}) => {
             <div className='px-5 space-y-2'>
                 <p className='flex items-center gap-2 text-black/50'><IoLocationOutline /> {destination.country}</p>
             <div className='flex justify-between'>
-                <h3 className={`${causeSans.className} text-2xl font-semibold`}>{destination.destinationName}</h3>
+                <h3 className={` text-2xl font-semibold`}>{destination.destinationName}</h3>
                 <p>${destination.price}</p>
             </div>
             <p className='flex items-center gap-2 text-black/50'><SlCalender />{destination.duration}</p>

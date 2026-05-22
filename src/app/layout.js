@@ -5,10 +5,7 @@ const geistSans = Geist({
   variable: "--font-geist-sans",
   subsets: ["latin"],
 });
-export const causeSans = Cause({
-  variable: "--font-cause-sans",
-  subsets: ["latin"],
-});
+
 
 const geistMono = Geist_Mono({
   variable: "--font-geist-mono",

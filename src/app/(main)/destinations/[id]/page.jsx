@@ -1,14 +1,13 @@
 import { singleDestination } from '@/lib/data';
-import { Button } from '@heroui/react';
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
 import { IoMdArrowBack } from 'react-icons/io';
-import { IoArrowForwardSharp, IoLocationOutline } from 'react-icons/io5';
+import { IoLocationOutline } from 'react-icons/io5';
 import { SlCalender } from 'react-icons/sl';
-import { causeSans } from '@/app/layout';
 import EditDestination from '@/app/components/EditDestination';
 import DeleteDestinations from '@/app/components/DeleteDestinations';
+import Booking from '@/app/components/Booking';
 
 const DestinationDetailsPage = async ({params}) => {
     const {id} = await params
@@ -29,25 +28,13 @@ const DestinationDetailsPage = async ({params}) => {
                 <div className=' space-y-3'>
                 <p className='flex items-center gap-2 text-black/50'><IoLocationOutline /> {destination.country}</p>
             <div className='flex justify-between'>
-                <h3 className={`${causeSans.className} text-4xl font-semibold my-3`}>{destination.destinationName}</h3>
+                <h3 className={` text-4xl font-semibold my-3`}>{destination.destinationName}</h3>
             </div>
             <p className='flex items-center gap-2 text-black/50'><SlCalender />{destination.duration}</p>
-            <p className={`${causeSans.className} text-2xl font-semibold`}>Overview</p>
+            <p className={` text-2xl font-semibold`}>Overview</p>
             <p className='text-black/50'>{destination.description}</p>
             </div>
-                <div className='md:w-[500px] shadow p-4 space-y-3'>
-                    <p className='text-black/50'>Starting From</p>
-                    <p className='text-cyan-500 font-semibold text-2xl'>${destination.price}</p>
-                    <p className='text-black/50'>Person</p>
-                    <p className='bg-gray-200 p-3'>{destination.departureDate}</p>
-                    <hr />
-                    <Link href={'/my-bookings'}><Button
-                                  variant="outline"
-                                  className=" rounded-none w-full bg-cyan-500 text-white flex gap-3 items-center"
-                                >
-                                  Book Now <IoArrowForwardSharp />
-                                </Button></Link>
-                </div>
+                <Booking destination={destination}/>
             </div>
         </div>
     );

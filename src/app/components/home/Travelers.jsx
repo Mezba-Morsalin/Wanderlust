@@ -1,4 +1,4 @@
-import { causeSans } from '@/app/layout';
+;
 import React from 'react';
 import { FaLongArrowAltLeft, FaLongArrowAltRight } from 'react-icons/fa';
 import person2 from '../../../../public/assets/person2.png'
@@ -10,7 +10,7 @@ const Travelers = () => {
         <div className='w-11/12 mx-auto my-16'>
             <div className='flex justify-between'>
                 <div className='space-y-2.5'>
-                    <h2 className={`${causeSans.className} text-4xl font-semibold`}>What Travelers Say</h2>
+                    <h2 className={` text-4xl font-semibold`}>What Travelers Say</h2>
                     <p className='text-black/50'>Real experiences from our happy travelers</p>
                 </div>
                 <div className='flex gap-3'>
@@ -26,8 +26,8 @@ const Travelers = () => {
            <div className='flex flex-col lg:flex-row gap-12 mt-10'>
              <div className='flex flex-col-reverse lg:flex-row gap-10 border shadow border-gray-300 p-8'>
                 <div className='space-y-2'>
-                    <h3 className={`${causeSans.className} text-2xl font-semibold`}>The Bali trip was absolutely magical! every details was perfectly planned. That Resort via luxurious and the cultural experiences where unforgettable</h3>
-                <p className={`${causeSans.className} text-cyan-500`}>-- Michel Chen</p>
+                    <h3 className={`$ text-2xl font-semibold`}>The Bali trip was absolutely magical! every details was perfectly planned. That Resort via luxurious and the cultural experiences where unforgettable</h3>
+                <p className={` text-cyan-500`}>-- Michel Chen</p>
                 <p className='text-black/50'>Singapore</p>
                 </div>
                 <div>
@@ -36,8 +36,8 @@ const Travelers = () => {
             </div>
             <div className='flex flex-col-reverse lg:flex-row gap-10 border shadow border-gray-300 p-8'>
                 <div className='space-y-2'>
-                    <h3 className={`${causeSans.className} text-2xl font-semibold`}>Swiss Alps adventure exceeded all Expectations the mountain views where breathtaking and our guide was incredibly knowledgeable highly Recommended</h3>
-                <p className={`${causeSans.className} text-cyan-500`}>-- Sarah Johnson</p>
+                    <h3 className={`text-2xl font-semibold`}>Swiss Alps adventure exceeded all Expectations the mountain views where breathtaking and our guide was incredibly knowledgeable highly Recommended</h3>
+                <p className={`$ text-cyan-500`}>-- Sarah Johnson</p>
                 <p className='text-black/50'>New York, USA</p>
                 </div>
                 <div>

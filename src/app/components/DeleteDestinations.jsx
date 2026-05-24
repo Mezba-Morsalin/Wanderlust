@@ -1,4 +1,5 @@
 "use client"
+import { authClient } from '@/lib/auth-client';
 import { AlertDialog, Button } from '@heroui/react';
 import { redirect } from 'next/navigation';
 import React from 'react';
@@ -6,8 +7,14 @@ import toast, { Toaster } from 'react-hot-toast';
 
 const DeleteDestinations = ({destination }) => {
   const handleDelete = async() => {
+
+    const {data : tokenData} = await authClient.token()
+    console.log(tokenData)
     const  res = await fetch(`http://localhost:5000/destinations/${destination._id}`, {
-        method : "DELETE"
+        method : "DELETE",
+        headers : {
+          authorization : `Bearer ${tokenData?.token}`
+        }
     })
 
     const data = await res.json();

@@ -1,21 +1,26 @@
 "use client"
 
+import { authClient } from '@/lib/auth-client';
 import { Button, FieldError, Input, Label, ListBox, TextArea, TextField, Select } from '@heroui/react';
+import { useRouter } from 'next/navigation';
+;
 import React from 'react';
 import toast, { Toaster } from 'react-hot-toast';
 
 const AddDestination = () => {
+  const router = useRouter()
 
     const onSubmitForm = async (e) => {
         e.preventDefault();
         const formData = new FormData(e.currentTarget);
         const destination = Object.fromEntries(formData.entries());
        
-
+      const {data : tokenData} = await authClient.token()
         const res = await fetch('http://localhost:5000/destinations', {
             method : 'POST',
             headers : {
-                "Content-type" : "application/json"
+                "Content-type" : "application/json",
+                authorization :  `Bearer ${tokenData?.token}`
             },
             body : JSON.stringify(destination),
         })
@@ -23,9 +28,12 @@ const AddDestination = () => {
   
 
         if (data) {
-          toast.success('Destination Added Successfully');
-          e.target.reset()
-        }
+  toast.success('Destination Added Successfully');
+
+  setTimeout(() => {
+    router.push('/destinations');
+  }, 1000);
+}
     }
     return (
         <div className='w-11/12 mx-auto my-12'>

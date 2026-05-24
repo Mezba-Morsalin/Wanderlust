@@ -1,16 +1,27 @@
 
 
 import { revalidatePath } from "next/cache";
+import { auth } from "./auth";
+import { headers } from "next/headers";
 
 export const UpdateForm = async (_id, formData) => {
     "use server"
 
     const updateDestination = Object.fromEntries(formData.entries());
 
+
+    const {getTokens} = await auth.api.getToken({
+            headers : await headers()
+        })
+
+    const token = getTokens?.token
+    console.log(token)
+
     const res = await fetch(`http://localhost:5000/destinations/${_id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
+            authorization : `Bearer ${token}`
         },
         body: JSON.stringify(updateDestination),
     });
@@ -23,17 +34,3 @@ export const UpdateForm = async (_id, formData) => {
         revalidatePath(`/destinations`);
     }
 };
-
-// export const deleteDestinationAction = async (_id) => {
-    
-//     const  res = await fetch(`http://localhost:5000/destinations/${_id}`, {
-//         method : "DELETE"
-//     })
-
-//     const data = await res.json();
-
-//     if (data.deletedCount > 0) {
-//         revalidatePath('/destinations')
-//     }
-//     return data
-// }

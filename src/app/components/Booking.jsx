@@ -35,18 +35,20 @@ const Booking = ({ destination }) => {
             departureDate: date.toString(),
         };
 
+            const {data : tokenData} = await authClient.token();
+
         try {
 
             const res = await fetch("http://localhost:5000/bookings", {
                 method: "POST",
                 headers: {
                     "Content-Type": "application/json",
+                    authorization: `Bearer ${tokenData?.token}`
                 },
                 body: JSON.stringify(bookingData),
             });
 
             const data = await res.json();
-            console.log(data);
 
             if(data?.acknowledged) {
                 toast.success(`${destination.destinationName} Booking Successful`)

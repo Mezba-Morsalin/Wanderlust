@@ -16,7 +16,7 @@ const EditDestination = ({destination}) => {
       <Button className={'flex items-center gap-2.5'} variant="outline"><FiEdit3 />Edit</Button>
       <Modal.Backdrop>
         <Modal.Container placement="auto">
-          <Modal.Dialog className="sm:max-w-4xl">
+          <Modal.Dialog className="sm:max-w-3xl mt-16">
             <Modal.CloseTrigger />
             <Modal.Header>
               <Modal.Icon className="bg-accent-soft text-accent-soft-foreground">

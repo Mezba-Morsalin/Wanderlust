@@ -1,4 +1,4 @@
-import { singleDestination } from '@/lib/data';
+
 import Image from 'next/image';
 import Link from 'next/link';
 import React from 'react';
@@ -8,10 +8,25 @@ import { SlCalender } from 'react-icons/sl';
 import EditDestination from '@/app/components/EditDestination';
 import DeleteDestinations from '@/app/components/DeleteDestinations';
 import Booking from '@/app/components/Booking';
+import { auth } from '@/lib/auth';
+import { headers } from 'next/headers';
 
 const DestinationDetailsPage = async ({params}) => {
     const {id} = await params
-    const destination = await singleDestination(id)
+
+    const {token} = await auth.api.getToken({
+        headers : await headers()
+    })
+    console.log(token)
+
+    const res = await fetch(`http://localhost:5000/destinations/${id}`, 
+        {
+            headers : {
+                authorization : `Bearer ${token}`
+            }
+        }
+    )
+    const destination = await res.json();
     return (
         <div className='px-3 max-w-7xl mx-auto space-y-4 my-16'>
             <div className='flex justify-between'>

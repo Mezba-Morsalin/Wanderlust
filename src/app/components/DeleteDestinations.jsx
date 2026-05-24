@@ -10,7 +10,7 @@ const DeleteDestinations = ({destination }) => {
 
     const {data : tokenData} = await authClient.token()
     console.log(tokenData)
-    const  res = await fetch(`http://localhost:5000/destinations/${destination._id}`, {
+    const  res = await fetch(`${process.env.SERVER_URL}/destinations/${destination._id}`, {
         method : "DELETE",
         headers : {
           authorization : `Bearer ${tokenData?.token}`

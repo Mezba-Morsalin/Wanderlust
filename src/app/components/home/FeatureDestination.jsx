@@ -1,4 +1,4 @@
-import { getDestination } from '@/lib/data';
+
 import { Button } from '@heroui/react';
 import Link from 'next/link';
 import React from 'react';
@@ -6,7 +6,8 @@ import { FaLongArrowAltRight } from 'react-icons/fa';
 import SlideDestination from './SildeDestination';
 
 const FeatureDestination = async () => {
-    const destinations = await getDestination()
+    const res = await fetch(`${process.env.SERVER_URL}/destinations`)
+    const destinations = await res.json();
     return (
         <div className='w-11/12 mx-auto my-16'>
             <div className='flex flex-col md:flex-row justify-between'>

@@ -1,12 +1,12 @@
 import Destination from '@/app/components/Destination';
-import { getDestination } from '@/lib/data';
 import Image from 'next/image';
 import React from 'react';
 import noDestination from '../../../../public/assets/NoDestination.png'
 import Link from 'next/link';
 import { GoArrowRight } from 'react-icons/go';
 const DestinationPage = async () => {
-    const destinations = await getDestination()
+    const res = await fetch(`${process.env.SERVER_URL}/destinations`)
+        const destinations = await res.json()
     return (
         <div className='w-11/12 mx-auto my-16'>
             {

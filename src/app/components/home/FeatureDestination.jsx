@@ -6,7 +6,7 @@ import { FaLongArrowAltRight } from 'react-icons/fa';
 import SlideDestination from './SildeDestination';
 
 const FeatureDestination = async () => {
-    const res = await fetch(`${process.env.SERVER_URL}/destinations`)
+    const res = await fetch(`${process.env.SERVER_URL}/featured`)
     const destinations = await res.json();
     return (
         <div className='w-11/12 mx-auto my-16'>
@@ -21,7 +21,7 @@ const FeatureDestination = async () => {
             </div>
             <div className='grid md:grid-cols-2 lg:grid-cols-3 gap-10'>
                  {
-                    destinations.slice(1, 4).map(destination => <SlideDestination key={destination._id} destination={destination}></SlideDestination>)
+                    destinations.map(destination => <SlideDestination key={destination._id} destination={destination}></SlideDestination>)
                  }
             </div>
         </div>

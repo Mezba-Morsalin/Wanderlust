@@ -19,7 +19,7 @@ const DestinationDetailsPage = async ({params}) => {
     })
     console.log(token)
 
-    const res = await fetch(`${process.env.SERVER_URL}/destinations/${id}`, 
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${id}`, 
         {
             headers : {
                 authorization : `Bearer ${token}`
@@ -27,6 +27,7 @@ const DestinationDetailsPage = async ({params}) => {
         }
     )
     const destination = await res.json();
+    console.log(destination)
     return (
         <div className='px-3 max-w-7xl mx-auto space-y-4 my-16'>
             <div className='flex justify-between'>

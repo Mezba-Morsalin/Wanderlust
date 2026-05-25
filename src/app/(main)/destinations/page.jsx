@@ -5,7 +5,7 @@ import noDestination from '../../../../public/assets/NoDestination.png'
 import Link from 'next/link';
 import { GoArrowRight } from 'react-icons/go';
 const DestinationPage = async () => {
-    const res = await fetch(`${process.env.SERVER_URL}/destinations`)
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations`)
         const destinations = await res.json()
     return (
         <div className='w-11/12 mx-auto my-16'>

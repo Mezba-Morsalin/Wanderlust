@@ -10,7 +10,7 @@ const CancelBooking = ({UId}) => {
     const handleDelete = async ()=> {
 
       const {data : tokenData} = await authClient.token();
-        const res = await fetch(`${process.env.SERVER_URL}/bookings/${UId}`, {
+        const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/bookings/${UId}`, {
             method: 'DELETE',
             headers : {
                 "Content-type" : "application/json",

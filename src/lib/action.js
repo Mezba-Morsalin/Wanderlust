@@ -17,7 +17,7 @@ export const UpdateForm = async (_id, formData) => {
     const token = getTokens?.token
     console.log(token)
 
-    const res = await fetch(`${process.env.SERVER_URL}/destinations/${_id}`, {
+    const res = await fetch(`${process.env.NEXT_PUBLIC_SERVER_URL}/destinations/${_id}`, {
         method: "PATCH",
         headers: {
             "Content-Type": "application/json",
